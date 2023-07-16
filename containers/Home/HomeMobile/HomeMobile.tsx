@@ -15,6 +15,7 @@ import { HeaderOnMobile } from "@/compositions";
 import FaqSection from "./components/FaqSection";
 import Testimonial from "../components/Testimonial";
 import CourseSection from "./components/CourseSection";
+import ModalVideo from "@/compositions/Modal/ModalVideo";
 
 export default function HomeMobile(props: HomePageProps) {
   const { initData } = props;
@@ -44,11 +45,11 @@ export default function HomeMobile(props: HomePageProps) {
       <Container>
         <Spacing spacing={25} />
 
-        <IntroductionMobile data={data} />
+        {/* <IntroductionMobile data={data} /> */}
 
         <Spacing spacing={6} />
 
-        <Box textAlign="center" paddingBottom={4}>
+        {/* <Box textAlign="center" paddingBottom={4}>
           <Headline
             title={
               locale === "en"
@@ -75,24 +76,26 @@ export default function HomeMobile(props: HomePageProps) {
             textTransform="uppercase"
             fontSize={"18px"}
           />
-        </Box>
+        </Box> */}
 
-        <Method data={compare_method_blocks} />
+        {/* <Method data={compare_method_blocks} /> */}
 
-        <HomeValue data={value_blocks} youtubeLink={youtube_link} />
+        {/* <HomeValue data={value_blocks} youtubeLink={youtube_link} /> */}
+
+        <ModalVideo linkVideo={youtube_link} />
 
         <Spacing spacing={12.5} />
-        <Testimonial data={review_blocks} />
+        {/* <Testimonial data={review_blocks} /> */}
 
         <Box id="gioi-thieu"></Box>
         <Spacing spacing={25} />
 
-        <HomeFounder data={founder_blocks} />
+        {/* <HomeFounder data={founder_blocks} /> */}
       </Container>
       <Box id="khoa-hoc" marginTop="-20px"></Box>
-      <CourseSection detailCourse={dataDetailCourse} listingCourse={dataListingCourse} />
+      {/* <CourseSection detailCourse={dataDetailCourse} listingCourse={dataListingCourse} /> */}
 
-      <FaqSection />
+      {/* <FaqSection /> */}
       <BackgroundWrapper />
     </Fragment>
   );
