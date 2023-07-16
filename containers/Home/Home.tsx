@@ -15,6 +15,7 @@ import HomeDesktop from "./HomeDesktop/HomeDesktop";
 import { FaqPage } from "@/interfaces/responseSchema/faq";
 import { HomePage } from "@/interfaces/responseSchema/home";
 import { DetailCousePage, IPage, ListingCousePage, responseSchema } from "@/interfaces";
+import ModalVideo from "@/compositions/Modal/ModalVideo";
 
 export type HomePageProps = IPage<
   [
@@ -35,8 +36,10 @@ const Home = (props: HomePageProps) => {
   const renderContent = useMemo(() => {
     if (data == undefined) return null;
 
-    if (isSmDown) return <HomeMobile {...props} />;
-
+    if (isMdDown) return <HomeMobile {...props} />;
+    {
+      /* <ModalVideo linkVideo={youtubeLink} /> */
+    }
     if (isMdDown) {
       return <HomeTablet {...props} />;
     }
