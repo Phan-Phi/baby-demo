@@ -1,0 +1,19 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.MuiBackdrop-root {
+  /* position: relative; */
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+@supports (-webkit-touch-callout: none) {
+  body {
+    /* The hack for Safari */
+    height: -webkit-fill-available;
+  }
+}
+
+body {
+  overflow: hidden;
+}
