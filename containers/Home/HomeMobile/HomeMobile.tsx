@@ -38,9 +38,7 @@ export default function HomeMobile(props: HomePageProps) {
 
   return (
     <Fragment>
-      <HeaderWrapper>
-        <HeaderOnMobile />
-      </HeaderWrapper>
+      <HeaderWrapper>{/* <HeaderOnMobile /> */}</HeaderWrapper>
 
       <Container>
         <Spacing spacing={25} />
