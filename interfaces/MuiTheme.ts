@@ -106,4 +106,10 @@ declare module "@mui/material/Select" {
   }
 }
 
+declare module "@mui/material/styles" {
+  interface BreakpointOverrides {
+    sm_horizontal: true;
+  }
+}
+
 export {};

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useContext, useMemo } from "react";
 import { Box, styled } from "@mui/material";
 import { isTablet } from "react-device-detect";
 
@@ -16,6 +16,8 @@ import { FaqPage } from "@/interfaces/responseSchema/faq";
 import { HomePage } from "@/interfaces/responseSchema/home";
 import { DetailCousePage, IPage, ListingCousePage, responseSchema } from "@/interfaces";
 import ModalVideo from "@/compositions/Modal/ModalVideo";
+import { ColorModeContext } from "@/contexts/DeviceContext";
+import { useWindowSize } from "react-use";
 
 export type HomePageProps = IPage<
   [
@@ -28,24 +30,27 @@ export type HomePageProps = IPage<
 
 const Home = (props: HomePageProps) => {
   const { initData } = props;
-
-  const { isSmDown, isMdDown } = useMedia();
+  const { width } = useWindowSize();
+  console.log("🚀 ~ file: Home.tsx:34 ~ Home ~ width:", width);
+  const { isSmDown, isMdDown, isSm_HoDown, isMdUp } = useMedia();
 
   const data = get(initData, "[0].items[0]");
+  const { currentMode } = useContext(ColorModeContext);
 
   const renderContent = useMemo(() => {
     if (data == undefined) return null;
 
-    if (isMdDown) return <HomeMobile {...props} />;
-    {
-      /* <ModalVideo linkVideo={youtubeLink} /> */
+    if (width <= 600) return <HomeMobile {...props} />;
+    if (currentMode === "trie") {
+      return <HomeMobile {...props} />;
     }
+
     if (isMdDown) {
       return <HomeTablet {...props} />;
     }
 
     return <HomeDesktop {...props} />;
-  }, [data, props, isMdDown, isSmDown]);
+  }, [data, props, isMdDown, isSmDown, currentMode]);
 
   if (data == undefined) return null;
 
@@ -55,6 +60,10 @@ const Home = (props: HomePageProps) => {
     <Container id="home-container">
       <SEO {...getSeoObject(meta)} />
       {renderContent}
+
+      {/* {isSm_HoDown && <HomeMobile {...props} />} */}
+      {/* {isMdDown && <HomeTablet {...props} />} */}
+      {/* {isMdUp && <HomeDesktop {...props} />} */}
     </Container>
   );
 };

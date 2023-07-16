@@ -1,8 +1,9 @@
-import { Fragment, useCallback, useState } from "react";
+import { Fragment, useCallback, useContext, useState } from "react";
 import { BoxProps, Fade, Modal, Typography, styled } from "@mui/material";
 
 import { Box } from "@/components";
 import Video from "@/containers/Home/components/Video";
+import { ColorModeContext } from "@/contexts/DeviceContext";
 
 interface Props {
   linkVideo: string;
@@ -14,11 +15,13 @@ interface BoxModalProps extends BoxProps {
 
 export default function ModalVideo({ linkVideo }: Props) {
   const [open, setOpen] = useState(false);
+  const { setColorMode } = useContext(ColorModeContext);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const handleModal = useCallback(() => {
+    setColorMode("trie");
     setOpen(true);
   }, []);
 

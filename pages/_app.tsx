@@ -9,6 +9,8 @@ import { ErrorBoundaryWrapper, Head, Intl } from "@/hocs";
 
 import "@/styles/global.css";
 import SnackBar from "@/contexts/SnackBar";
+import DeviceContext, { ColorModeContext } from "@/contexts/DeviceContext";
+import { useContext } from "react";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -30,7 +32,9 @@ export default function App(props: MyAppProps) {
               <SWR fallback={pageProps.fallback}>
                 <Setting>
                   <Layout>
-                    <Component {...pageProps} />
+                    <DeviceContext>
+                      <Component {...pageProps} />
+                    </DeviceContext>
                   </Layout>
                 </Setting>
               </SWR>

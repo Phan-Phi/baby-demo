@@ -15,6 +15,8 @@ export function useMedia() {
   const isXlDown = useMediaQuery(theme.breakpoints.down("xl"));
   const isXlUp = useMediaQuery(theme.breakpoints.up("xl"));
 
+  const isSm_HoDown = useMediaQuery(theme.breakpoints.down("sm_horizontal"));
+
   return {
     isSmDown,
     isSmUp,
@@ -24,5 +26,6 @@ export function useMedia() {
     isLgUp,
     isXlDown,
     isXlUp,
+    isSm_HoDown,
   };
 }
